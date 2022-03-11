@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Create {{ name }}?{% endblock %}
+
+{% block content %}
+    <div class="card" style="padding: 15px">
+        <h1 id="page_name">Create {{ name }}?</h1>
+        <p>
+            There is no page '{{ name }}'. You can:
+        </p>
+        <ul>
+            <li>
+                <a href="/edit/{{ name }}">Create the page '{{ name }}'</a>
+            </li>
+        </ul>
+    </div>
+{% endblock content %}
+
+{% block footer_scripts %}
+    <script>
+        $('table').addClass('table table-bordered table-striped');
+
+        var tocHeader = document.createElement("div");
+        tocHeader.classList.add('tocheader');
+        tocHeader.innerHTML = '<b>Table of Contents</b>';
+        $('.toc').prepend(tocHeader);
+    </script>
+{% endblock footer_scripts %}

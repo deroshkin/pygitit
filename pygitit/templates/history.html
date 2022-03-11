@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Version History of {{ name }}{% endblock %}
+
+{% block content %}
+    <ul class="nav nav-tabs" id="wiki_nav">
+        <li class="nav-link">
+            <a href="/wiki/{{ name }}">view</a>
+        </li>
+        {% if rev %}
+        <li class="nav-link">
+            <a href="/revert/{{ name }}/{{ rev }}">revert</a>
+        </li>
+        {% else %}
+        <li class="nav-link">
+            <a href="/edit/{{ name }}">edit</a>
+        </li>
+        {% endif %}
+        <li class="nav-link active">
+            <a href="#">history</a>
+        </li>
+    </ul>
+    <div class="card" id="wiki_wrapper">
+        <h1>Changes to {{ name }}</h1>
+        <form id="compare_revs" action="{{ diff_page }}" method="POST">
+            <button type="submit" id="compare" disabled>Compare versions</button>
+            <ol>
+                {% for commit in revisions %}
+                <li>
+                    <input onclick="selectiveCheck" type="checkbox" class="check" name="{{ commit['hex'] }}" />
+                    {{ commit['date'] }} {{ commit['time'] }} ({{ commit['author'] }}):
+                    <a href="/wiki/{{ name }}?revision={{ commit['hex'] }}">{{ commit['message'] }}</a>
+                </li>
+                {% endfor %}
+            </ol>
+        </form>
+    </div>
+{% endblock content %}
+
+{% block footer_scripts %}
+    <script>
+        var checks = document.querySelectorAll(".check");
+        for (var i = 0; i < checks.length; i++)
+            checks[i].onclick = selectiveCheck;
+        function selectiveCheck(event) {
+            var checkedChecks = document.querySelectorAll(".check:checked");
+            if (checkedChecks.length > 2)
+                return false;
+            if (checkedChecks.length == 2) {
+                document.getElementById("compare").disabled = false;
+            }
+            if (checkedChecks.length < 2)
+                document.getElementById("compare").disabled = true;
+        }
+    </script>
+{% endblock footer_scripts %}

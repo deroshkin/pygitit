@@ -1,0 +1,25 @@
+<div class="row">
+    {% if logo %}
+        <div class="d-none d-md-block col-md-12">
+            <div id="logo">
+                <a href="/wiki/" alt="site logo" title="Go to top page">
+                    <img src="{{ logo }}">
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    <div class="col-sm-6 col-md-12">
+        <div class="card">
+            <div class="card-header">Site</div>
+            <div class="card-body" id="nav_card">
+                <ul id="nav_list">
+                    <li>
+                        <a href="/wiki/">
+                            <ion-icon name="home"></ion-icon> Front page
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

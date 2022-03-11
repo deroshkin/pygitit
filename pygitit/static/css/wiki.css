@@ -1,0 +1,100 @@
+#wiki_nav {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#wiki_wrapper {
+    padding: 15px;
+    margin-top: 0;
+    border-radius: 0px 0px .25rem .25rem;
+    border-top: none;
+}
+
+#page_name {
+    font-size: 300%;
+}
+
+#rev_label {
+    color: gray;
+    font-size: 65%;
+}
+
+#footer {
+    text-align: center;
+    font-size: 85%;
+    margin: 10px;
+    color: gray;
+}
+
+#nav_list {
+    list-style: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ion-icon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+}
+
+#logo img {
+    max-width: 100%;
+}
+
+.toc {
+    float: right;
+    margin: 10px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px;
+}
+
+.tocheader {
+    width: 100%;
+    background-color: #ddd;
+    text-align: center;
+}
+
+.toc ul {
+    counter-reset: ulItem;
+    list-style: none;
+    padding-inline-start: 10px;
+}
+
+.toc ul>li:before {
+    content: counters(ulItem, ".") ". ";
+    counter-increment: ulItem;
+}
+
+.diff {
+    font-family: Courier;
+    border: medium black solid;
+}
+
+.diff_header {
+    background-color: #e0e0e0;
+    text-align: right;
+}
+
+.diff_next {
+    background-color: #c0c0c0;
+}
+
+.diff_add {
+    background-color: #aaffaa;
+}
+
+.diff_chg {
+    background-color: #ffff77;
+}
+
+.diff_sub {
+    background-color: #ffaaaa;
+}

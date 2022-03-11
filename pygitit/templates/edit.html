@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Editing {{ name }}{% endblock %}
+
+{% block extra_scripts %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+{% endblock extra_scripts %}
+
+{% block content %}
+    <ul class="nav nav-tabs" id="wiki_nav">
+        <li class="nav-link">
+            <a href="/wiki/{{ name }}">view</a>
+        </li>
+        <li class="nav-link active">
+            <a href="#">edit</a>
+        </li>
+        <li class="nav-link">
+            <a href="/history/{{ name }}">history</a>
+        </li>
+    </ul>
+    <div class="card" id="wiki_wrapper">
+        <h1 id="page_name">
+            <a href="/wiki/{{ name }}" class="page_name">{{ name }}</a>
+            {% if rev %}<small id="rev_label">revision {{ rev }}</small>{% endif %}
+        </h1>
+        <div class="contents input_group">
+            <form id="edit_page" action="/wiki/{{ name }}" method="POST">
+                <textarea name="data" id="wiki_editor">{{ raw_data }}</textarea>
+                <label for="commit_msg">Commit Message:</label>
+                <br>
+                <input name="commit_msg" type="text" value="Updated {{ name }}" id="commit_msg">
+                </input>
+                <button type="submit" class="btn btn-primary" style="float:right;">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block footer_scripts %}
+    <script>
+        var simplemde = new SimpleMDE({ element: document.getElementById("wiki_editor") });
+    </script>
+{% endblock footer_scripts %}

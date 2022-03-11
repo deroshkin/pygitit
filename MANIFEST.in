@@ -1,0 +1,3 @@
+recursive-include pygitit templates *.html
+recursive-include pygitit static css *.css
+recursive-include pygitit static img *.png

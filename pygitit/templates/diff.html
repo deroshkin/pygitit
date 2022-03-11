@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ name }} - {{ old_rev }} to {{ new_rev }}{% endblock title %}
+
+{% block content %}
+    <ul class="nav nav-tabs" id="wiki_nav">
+        <li class="nav-link active">
+            <a href="#">view</a>
+        </li>
+        <li class="nav-link">
+            <a href="/edit/{{ name }}">edit</a>
+        </li>
+        <li class="nav-link">
+            <a href="/history/{{ name }}">history</a>
+        </li>
+    </ul>
+
+    <div class="card" id="wiki_wrapper">
+        <h1 id="page_name">
+            <a href="/wiki/{{ name }}">{{ name }}</a>
+            <small id="rev_label"> revision difference {{ old_rev }} to {{ new_rev }} </small>
+        </h1>
+        <div class="wiki_contents">{{ diff_table }}</div>
+    </div>
+{% endblock content %}

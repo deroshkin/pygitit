@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ name }}{% endblock %}
+
+{% block content %}
+    <ul class="nav nav-tabs" id="wiki_nav">
+        <li class="nav-link active">
+            <a href="#">view</a>
+        </li>
+        {% if rev %}
+            <li class="nav-link">
+                <a href="/revert/{{ name }}?revision={{ rev }}">revert</a>
+            </li>
+        {% else %}
+            <li class="nav-link">
+                <a href="/edit/{{ name }}">edit</a>
+            </li>
+        {% endif %}
+        <li class="nav-link">
+            <a href="/history/{{ name }}">history</a>
+        </li>
+    </ul>
+    <div class="card" id="wiki_wrapper">
+        <h1 id="page_name">
+            <a href="/wiki/{{ name }}">{{ name }}</a>
+            {% if rev %}<small id="rev_label">revision {{ rev }}</small>{% endif %}
+        </h1>
+        <div class="wiki_contents">{{ data }}</div>
+    </div>
+{% endblock content %}
+
+{% block footer_scripts %}
+    <script>
+        $('table').addClass('table table-bordered table-striped');
+
+        var tocHeader = document.createElement("div");
+        tocHeader.classList.add('tocheader');
+        tocHeader.innerHTML = '<b>Table of Contents</b>';
+        $('.toc').prepend(tocHeader);
+    </script>
+{% endblock footer_scripts %}
