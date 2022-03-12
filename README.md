@@ -21,6 +21,7 @@ Alternatively, you may run `pygitit -s [config_file]`, where the config file mus
 * host ("localhost") - If you want to run the wiki over the network/internet, this should be the ip/url. To run it locally, use "localhost".
 * port (7600) - Port on which the wiki should run.
 * suffix ("wiki") - Suffix for the stored wiki files.
+* home ("Home") - The main page of the wiki.
 * extensions (\["toc", "tables"\]) - Python markdown extensions. PyGitit will also automatically add the WikiLinkExtension to enable cross-linking the wiki pages.
 * log_file ("stderr") - File for logging PyGitit operations. Can use "stderr" or "stdout" for standard output destinations.
 * logo("/static/img/PyGitit.png") - URL of the logo to be used on the wiki.
